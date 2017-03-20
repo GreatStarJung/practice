@@ -1,0 +1,19 @@
+<h1>Home#index</h1>
+<p>Find me in app/views/home/index.html.erb</p>
+<% if model_signed_in? %>
+  <%= current_model.email %>
+  <a href="/models/sign_out">로그아웃하기</a>
+<% else %>
+  <a href="/models/sign_in">로그인하기</a>
+<% end %>
+<br><br><br><br><br>
+<% @posting.each do |x| %>
+<%= x.model_id %>: <%= x.post_title%> : <%= x.post_content %><a href="/home/delete/<%= x.id%>">[Delete]</a><br>
+<% end %>
+
+
+<form action="/home/write" method="post">
+title : <input type="text" name="title">
+content : <input type="content" name="content">
+<input type="submit" value="Gogo">
+</form>
